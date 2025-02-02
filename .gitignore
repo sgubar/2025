@@ -1,0 +1,10 @@
+.DS_Store
+# Finder
+.DS_Store*
+~tmp.xml
+
+## Various settings
+*.pbxuser
+xcuserdata/
+project.xcworkspace
+
