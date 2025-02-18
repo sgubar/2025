@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include "dk_tool.h"
-#include <string.h>
 
 int main() {
 
