@@ -3,11 +3,6 @@
 #include <string.h>
 
 int main() {
-    float a, b; 
-    int c; 
-    enter_numbers(&a, &b, &c); // Function to input numbers
-    getchar(); // Consume the newline character left in the buffer
-    display_math_operations(a, b, c); // Function to display math operations
 
     char sentence[100], pattern[50]; // Arrays to store strings
     printf("Enter a string: ");
@@ -17,8 +12,18 @@ int main() {
     fgets(pattern, sizeof(pattern), stdin); // Input a search string
 
     // Remove newline characters (if exists)
-    sentence[strcspn(sentence, "\n")] = '\0';
-    pattern[strcspn(pattern, "\n")] = '\0';
+    for (int i = 0; sentence[i] != '\0'; i++) {
+        if (sentence[i] == '\n') {
+            sentence[i] = '\0';
+            break;
+        }
+    }
+    for (int i = 0; pattern[i] != '\0'; i++) {
+        if (pattern[i] == '\n') {
+            pattern[i] = '\0';
+            break;
+        }
+    }
 
     int position = find_substring(sentence, pattern); // Find the position of the pattern in the sentence
     if (position != -1) {
