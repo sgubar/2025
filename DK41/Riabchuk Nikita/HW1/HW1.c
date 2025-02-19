@@ -1,9 +1,8 @@
-﻿#define _CRT_SECURE_NO_WARNINGS 
+#define _CRT_SECURE_NO_WARNINGS 
 #include <time.h>
 #include <math.h>               
 #include <stdio.h>  
 #include <stdlib.h>
-#include <time.h>
 //#include <iostream>             
 #include <Windows.h>            
 //#include <locale>  
@@ -13,17 +12,16 @@
 
 int main(int argc, char* argv[]) {
 
-    srand(time(NULL));
+    srand((int)time(NULL));
 
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
 
     const int size = 8;
     const int popa = 2;
-    int a = st(popa, size);
+    int a = (int)st(popa, size);
     int num;
     //num = rand() % a;
-    char* array = malloc(size * sizeof(char));
 
     if (argc == 1 || argc == 2) {
         if (argc == 1) {
@@ -41,12 +39,17 @@ int main(int argc, char* argv[]) {
             if (num >= a) { goto ddos; }
         } 
         
-        int 卍解вацаонима = db(num,a);
+        int 卍解вацаонима = db(num,size);
         printf("%i",卍解вацаонима);
         printf("\n");
-        printf("%i",bd(卍解вацаонима,a));
-        free(array);
+        printf("%i",bd(卍解вацаонима,size));
         printf("\n");
         system("pause");
+        return 0;
+    }
+    else
+    {
+        printf("ті дюрнії");
+        return -1;
     }
 }
