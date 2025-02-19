@@ -28,13 +28,14 @@ int main(int argc, char* argv[]) {
             num = atoi(argv[1]);
         }
             while (num >= a || num <=- 1) {
-                printf("Число:");
+                printf("Число в діапазоні 0 - %d:", a - 1);
                 if (scanf("%i", &num) == 0) {
                     while (getchar() != '\n');
-                    printf("еєеєєееєееє так діло не буде, забагато хочешь або роби менше %d або я тобі зламаю ноги\n", a);
+                    printf("еєеєєееєееє так діло не буде, забагато хочешь або роби в діапазоні 0 - %d або я тобі зламаю ноги\n", a-1);
                     continue;
                 }
             }
+        
             int 卍解вацаонима = dtb(num, size);
             printf("%i", 卍解вацаонима);
             printf("\n");
