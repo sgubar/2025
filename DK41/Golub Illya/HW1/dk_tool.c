@@ -1,6 +1,14 @@
 #include <stdio.h>
 #include "dk_tool.h"
 
+void remove_newline(char *str) {
+    for (int i = 0; str[i] != '\0'; i++) {
+        if (str[i] == '\n') {
+            str[i] = '\0';
+            break;
+        }
+    }
+}
 // Function to find substring in a string without using string.h
 int find_substring(const char *sentence, const char *pattern) 
 {
