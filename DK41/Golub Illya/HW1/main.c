@@ -11,18 +11,8 @@ int main() {
     fgets(pattern, sizeof(pattern), stdin); // Input a search string
 
     // Remove newline characters (if exists)
-    for (int i = 0; sentence[i] != '\0'; i++) {
-        if (sentence[i] == '\n') {
-            sentence[i] = '\0';
-            break;
-        }
-    }
-    for (int i = 0; pattern[i] != '\0'; i++) {
-        if (pattern[i] == '\n') {
-            pattern[i] = '\0';
-            break;
-        }
-    }
+    remove_newline(sentence);
+    remove_newline(pattern);
 
     int position = find_substring(sentence, pattern); // Find the position of the pattern in the sentence
     if (position != -1) {
