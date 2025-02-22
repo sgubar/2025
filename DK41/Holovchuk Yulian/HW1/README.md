@@ -12,3 +12,17 @@ Avoid code duplication—if there are repeating code segments, they should be mo
 - Inputting data from the terminal with validation, etc.  
 
 Find the transposed matrix.  
+
+### Compilation & Run  
+```sh
+gcc HW1/main.c HW1/dk_tool.c -o HW1/program && HW1/program
+```
+
+### Project Structure  
+```
+/HW1
+│── main.c        # Main program logic
+│── dk_tool.h     # Header file with function prototypes
+│── dk_tool.c     # Function implementations
+│── README.md     # Project documentation
+```
