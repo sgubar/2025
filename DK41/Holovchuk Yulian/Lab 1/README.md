@@ -8,7 +8,8 @@ In `main.c`, organize user input and output with validation. The program should 
 
 The expression to compute:  
 
-\[ Q \leftarrow \frac{A^2 + B^2}{B + 5^C} + B! \]  
+$$ Q \leftarrow \frac{A^2 + B^2}{B + 5^C} + B! $$
+ 
 
 where the input values are `A`, `B`, and `C`.
 
