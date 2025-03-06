@@ -1,15 +1,17 @@
 #include "dk_tool.h"
-#include <stdio.h>
 
 int main() {
     int size;
     printf("Enter the size of square matrices: ");
     while (scanf("%d", &size) != 1 || size <= 0) {
-        printf("Wrong number: ");
+        printf("Error! Enter a positive number: ");
         while (getchar() != '\n');
     }
 
-    int A[size][size], B[size][size], result[size][size];
+    int** A = createMatrix(size);
+    int** B = createMatrix(size);
+    int** result = createMatrix(size);
+
     printf("\nEntering the first matrix:\n");
     inputMatrix(size, A);
     printf("\nEntering the second matrix:\n");
@@ -18,8 +20,9 @@ int main() {
     printMatrix(size, A);
     printf("\nSecond matrix:\n");
     printMatrix(size, B);
-    multiply(size, A, B, result);
-    printf("\nResult of multipy:\n");
+    multiplyMatrices(size, A, B, result);
+    printf("\nResult of multiplication:\n");
     printMatrix(size, result);
+
     return 0;
 }
