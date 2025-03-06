@@ -26,6 +26,15 @@ int main() {
     multiplyMatrices(size, A, B, result);
     printf("Result of multiplication (A * B):\n");
     printMatrix(size, result);
+    
+    for (int i = 0; i < size; i++) {
+        free(A[i]);
+        free(B[i]);
+        free(result[i]);
+    }
+    free(A);
+    free(B);
+    free(result);
 
     return 0;
 }
