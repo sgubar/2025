@@ -14,8 +14,15 @@ void inputMatrix(int size, int** matrix) {
     printf("Enter matrix values (size %dx%d):\n", size, size);
     for (int i = 1; i <= size; i++) {
         for (int j = 1; j <= size; j++) {
-            printf("Element [%d][%d]: ", i, j);
-            scanf("%d", &matrix[i-1][j-1]);
+            while (1) {
+                printf("Element [%d][%d]: ", i, j);
+                if (scanf("%d", &matrix[i-1][j-1]) != 1) {
+                    printf("Invalid input. Please enter an integer.\n");
+                    while(getchar() != '\n');
+                } else {
+                    break;
+                }
+            }
         }
     }
 }
