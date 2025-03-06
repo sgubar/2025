@@ -1,27 +1,30 @@
+#include <stdio.h>
+#include <stdlib.h>
 #include "dk_tool.h"
 
 int main() {
     int size;
-    printf("Enter the size of square matrices: ");
-    while (scanf("%d", &size) != 1 || size <= 0) {
-        printf("Error! Enter a positive number: ");
-        while (getchar() != '\n');
+    while (1) {
+        printf("Enter size of the matrix: ");
+        if (scanf("%d", &size) != 1 || size <= 0) {
+            printf("Invalid input. Please enter a positive integer.\n");
+            while(getchar() != '\n');
+        } else {
+            break;
+        }
     }
-
     int** A = createMatrix(size);
     int** B = createMatrix(size);
     int** result = createMatrix(size);
 
-    printf("\nEntering the first matrix:\n");
     inputMatrix(size, A);
-    printf("\nEntering the second matrix:\n");
     inputMatrix(size, B);
-    printf("\nFirst matrix:\n");
+    printf("Matrix A:\n");
     printMatrix(size, A);
-    printf("\nSecond matrix:\n");
+    printf("Matrix B:\n");
     printMatrix(size, B);
     multiplyMatrices(size, A, B, result);
-    printf("\nResult of multiplication:\n");
+    printf("Result of multiplication (A * B):\n");
     printMatrix(size, result);
 
     return 0;
