@@ -1,35 +1,41 @@
 #include "dk_tool.h"
 #include <stdio.h>
+#include <stdlib.h>
 
-void inputMatrix(int size, int matrix[size][size]) {
-    printf("Enter elements of %dx%d matrix:\n", size, size);
+int** createMatrix(int size) {
+    int** matrix = (int**)malloc(size * sizeof(int*));
+    for (int i = 0; i < size; i++) {
+        matrix[i] = (int*)calloc(size, sizeof(int));
+    }
+    return matrix;
+}
+
+void inputMatrix(int size, int** matrix) {
+    printf("Enter matrix values (size %dx%d):\n", size, size);
     for (int i = 1; i <= size; i++) {
         for (int j = 1; j <= size; j++) {
             printf("Element [%d][%d]: ", i, j);
-            while (scanf("%d", &matrix[i][j]) != 1) {
-                printf("Error! Enter a valid number: ");
-                while (getchar() != '\n');
-            }
+            scanf("%d", &matrix[i-1][j-1]);
         }
     }
 }
 
-void printMatrix(int size, int matrix[size][size]) {
-    printf("Matrix %dx%d:\n", size, size);
+void printMatrix(int size, int** matrix) {
+    printf("Matrix (%dx%d):\n", size, size);
     for (int i = 1; i <= size; i++) {
         for (int j = 1; j <= size; j++) {
-            printf("%4d ", matrix[i][j]);
+            printf("%d ", matrix[i-1][j-1]);
         }
         printf("\n");
     }
 }
 
-void multiply(int size, int A[size][size], int B[size][size], int result[size][size]) {
+void multiplyMatrices(int size, int** A, int** B, int** result) {
     for (int i = 1; i <= size; i++) {
         for (int j = 1; j <= size; j++) {
-            result[i][j] = 0;
+            result[i-1][j-1] = 0;
             for (int k = 1; k <= size; k++) {
-                result[i][j] += A[i][k] * B[k][j];
+                result[i-1][j-1] += A[i-1][k-1] * B[k-1][j-1];
             }
         }
     }
