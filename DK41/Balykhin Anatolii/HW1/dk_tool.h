@@ -7,4 +7,3 @@ void printMatrix(int size, int** matrix);
 void multiplyMatrices(int size, int** A, int** B, int** result);
 
 #endif // DK_TOOL_H
-
