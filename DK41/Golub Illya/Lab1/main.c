@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include "mathfunc.h"
 
 int main() {
@@ -10,24 +9,20 @@ int main() {
     // Введення значення A з валідацією
     while (1) {
         printf("Enter integer for A (0 <= A <= 20): ");
-        if (fgets(buffer, sizeof(buffer), stdin) != NULL) {
-            if (sscanf(buffer, "%d", &A) == 1 && A >= 0 && A <= 20) {
-                break;
-            } else {
-                printf("Incorrect Value. Type from 0 to 20.\n");
-            }
+        if (check_input(&A, "%d") && A >= 0 && A <= 20) {
+            break;
+        } else {
+            printf("Incorrect Value. Type from 0 to 20.\n");
         }
     }
 
     // Введення значення B з валідацією
     while (1) {
         printf("Enter a number for B: ");
-        if (fgets(buffer, sizeof(buffer), stdin) != NULL) {
-            if (sscanf(buffer, "%lf", &B) == 1) {
-                break;
-            } else {
-                printf("Invalid input. Please enter a number.\n");
-            }
+        if (check_input(&B, "%lf")) {
+            break;
+        } else {
+            printf("Invalid input. Please enter a number.\n");
         }
     }
 
@@ -47,3 +42,4 @@ int main() {
 
     return 0;
 }
+
