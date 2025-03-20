@@ -4,18 +4,12 @@
 typedef struct Node {
     int data;
     struct Node* next;
-    struct Node* prev;
 } Node;
 
-typedef struct List {
-    Node* head;
-    Node* tail;
-} List;
+void init_list(Node** head);
+void add_to_list(Node** head, int value);
+void print_list(Node* head);
+int reverse_between(Node* head, int target);
+void free_list(Node* head);
 
-List* createTwoSidedMallocList();
-void append(List* list, int data);
-void printList(List* list);
-void freeList(List* list);
-void doubleElement(List* list, int element);
-
-#endif // LIST_H
+#endif
