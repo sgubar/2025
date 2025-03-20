@@ -45,7 +45,7 @@ int main() {
                     while(getchar() != '\n');
                     break;
                 }
-                if (reverse_between(list, target)) {
+                if (reverse_between(&list, target)) {
                     printf("Elements between the first and last occurrence of %d have been reversed.\n", target);
                 } else {
                     printf("Number %d does not appear in the list or appears less than twice.\n", target);
