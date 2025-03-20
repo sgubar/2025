@@ -60,7 +60,6 @@ int reverse_between(Node* head, int target) {
     return 1;
 }
 
-// Function to free the memory used by the list
 void free_list(Node* head) {
     Node* current = head;
     Node* next;
