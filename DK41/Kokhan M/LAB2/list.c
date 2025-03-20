@@ -1,48 +1,20 @@
-#include "list.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include "list.h"
 
-List* createTwoSidedMallocList() {
-    List* newList = (List*)malloc(sizeof(List));
-    if (newList == NULL) {
-        fprintf(stderr, "Malloc error!\n");
-        return NULL;
-    }
-
-    newList->head = NULL;
-    newList->tail = NULL;
-    return newList;
+void init_list(Node** head) {
+    *head = NULL;
 }
 
-void append(List* list, int data) {
-    Node* newNode = (Node*)malloc(sizeof(Node));
-    if (newNode == NULL) {
-        fprintf(stderr, "Append error\n");
-        return;
-    }
-
-    newNode->data = data;
-    newNode->next = NULL;
-
-    if (list->head == NULL) {
-        newNode->prev = NULL;
-        list->head = newNode;
-        list->tail = newNode;
-    } else {
-        newNode->prev = list->tail;
-        list->tail->next = newNode;
-        list->tail = newNode;
-    }
+void add_to_list(Node** head, int value) {
+    Node* new_node = (Node*)malloc(sizeof(Node));
+    new_node->data = value;
+    new_node->next = *head;
+    *head = new_node;
 }
 
-void printList(List* list) {
-    if (list->head == NULL) {
-        printf("Empty list.\n");
-        return;
-    }
-
-    Node* current = list->head;
-    printf("List: ");
+void print_list(Node* head) {
+    Node* current = head;
     while (current != NULL) {
         printf("%d ", current->data);
         current = current->next;
@@ -50,40 +22,51 @@ void printList(List* list) {
     printf("\n");
 }
 
-void freeList(List* list) {
-    Node* current = list->head;
-    Node* nextNode;
+int reverse_between(Node* head, int target) {
+    Node* first = NULL;
+    Node* last = NULL;
+    Node* current = head;
+    int count = 0;
+
     while (current != NULL) {
-        nextNode = current->next;
-        free(current);
-        current = nextNode;
+        if (current->data == target) {
+            if (first == NULL) {
+                first = current;
+            }
+            last = current;
+            count++;
+        }
+        current = current->next;
     }
-    free(list);
+
+    if (count < 2) {
+        return 0;
+    }
+    Node* prev = NULL;
+    Node* next = NULL;
+    current = first->next;
+    while (current != last) {
+        next = current->next;
+        current->next = prev;
+        prev = current;
+        current = next;
+    }
+    
+    first->next = last;
+    if (prev != NULL) {
+        first->next = prev;
+    }
+
+    return 1;
 }
 
-void doubleElement(List* list, int element) {
-    Node* current = list->head;
+// Function to free the memory used by the list
+void free_list(Node* head) {
+    Node* current = head;
+    Node* next;
     while (current != NULL) {
-        if (current->data == element) {
-            Node* newNode = (Node*)malloc(sizeof(Node));
-            if (newNode == NULL) {
-                fprintf(stderr, "Double el error\n");
-                return;
-            }
-            
-            newNode->data = element;
-            newNode->next = current->next;
-            newNode->prev = current;
-
-            if (current->next != NULL) {
-                current->next->prev = newNode;
-            } else {
-                list->tail = newNode;
-            }
-            current->next = newNode;
-            current = newNode->next;
-        } else {
-            current = current->next;
-        }
+        next = current->next;
+        free(current);
+        current = next;
     }
 }
