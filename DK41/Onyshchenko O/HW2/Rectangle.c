@@ -2,7 +2,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// Створення прямокутника за координатами
 Rectangle* createRectangle(double x1, double y1, double x2, double y2) {
     Rectangle* rect = (Rectangle*)malloc(sizeof(Rectangle));
     if (rect == NULL) {
@@ -15,14 +14,13 @@ Rectangle* createRectangle(double x1, double y1, double x2, double y2) {
     rect->bottomRight.y = y2;
     return rect;
 }
-// Знищення прямокутника
+
 void destroyRectangle(Rectangle* rect) {
     if (rect != NULL) {
         free(rect);
     }
 }
 
-// Обчислення площі прямокутника
 double calculateArea(const Rectangle* rect) {
     if (rect == NULL) {
         printf("Rectangle does not exist!\n");
@@ -33,7 +31,6 @@ double calculateArea(const Rectangle* rect) {
     return width * height;
 }
 
-// Виведення параметрів прямокутника
 void printRectangle(const Rectangle* rect) {
     if (rect == NULL) {
         printf("Rectangle does not exist!\n");
@@ -44,7 +41,7 @@ void printRectangle(const Rectangle* rect) {
     printf("Lower right point: (%.2f, %.2f)\n", rect->bottomRight.x, rect->bottomRight.y);
 }
 
-// Введення координат прямокутника
+
 Rectangle* inputRectangle() {
     double x1, y1, x2, y2;
     printf("Enter the coordinates of the upper left point (x1 y1): ");
@@ -52,7 +49,6 @@ Rectangle* inputRectangle() {
     printf("Enter the coordinates of the lower right point (x2 y2): ");
     scanf("%lf %lf", &x2, &y2);
 
-    // Перевірка на коректність
     if (x1 >= x2 || y1 <= y2) {
         printf("Error: coordinates do not form a rectangle!\n");
         return NULL;
