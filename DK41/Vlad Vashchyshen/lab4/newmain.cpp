@@ -130,3 +130,6 @@ int main(int argc, char** argv) {
     return 0;
 }
 
+// Замість std::vector<Shape> використано однозв'язний список, який реалізується через Node* head. 
+// Додано функції для: додавання елемента в кінець списку (addShape) видалення останнього елемента (removeShape)
+// Замість циклу for (auto& shape : shapes) використано while (current != nullptr).
