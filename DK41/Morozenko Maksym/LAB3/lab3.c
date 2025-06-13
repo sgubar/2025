@@ -1,14 +1,14 @@
-#include <stdio.h>
+#include <stdio.h> 
 #include <stdlib.h>
 
-// Structure of a tree node
+// Структура вузла дерева
 typedef struct Node {
     double data;
     struct Node* left;
     struct Node* right;
 } Node;
 
-// Create a new node
+// Створення нового вузла
 Node* createNode(double data) {
     Node* newNode = (Node*)malloc(sizeof(Node));
     newNode->data = data;
@@ -16,7 +16,7 @@ Node* createNode(double data) {
     return newNode;
 }
 
-// Insert a node
+// Додавання вузла
 Node* insert(Node* root, double data) {
     if (root == NULL) return createNode(data);
     if (data < root->data)
@@ -26,7 +26,7 @@ Node* insert(Node* root, double data) {
     return root;
 }
 
-// Search for a node
+// Пошук вузла
 Node* search(Node* root, double data) {
     if (root == NULL || root->data == data) return root;
     if (data < root->data)
@@ -34,14 +34,14 @@ Node* search(Node* root, double data) {
     return search(root->right, data);
 }
 
-// Find minimum node
+// Пошук вузла з мінімальним значенням
 Node* findMin(Node* root) {
     while (root->left != NULL)
         root = root->left;
     return root;
 }
 
-// Delete a node
+// Видалення вузла
 Node* deleteNode(Node* root, double data) {
     if (root == NULL) return root;
     if (data < root->data)
@@ -65,7 +65,7 @@ Node* deleteNode(Node* root, double data) {
     return root;
 }
 
-// Preorder traversal (Node -> Left -> Right)
+// Прямий обхід дерева (Вузол -> Ліво -> Право)
 void preorder(Node* root) {
     if (root != NULL) {
         printf("%.2lf ", root->data);
@@ -74,7 +74,7 @@ void preorder(Node* root) {
     }
 }
 
-// Delete the entire tree
+// Видалення всього дерева
 void deleteTree(Node* root) {
     if (root == NULL) return;
     deleteTree(root->left);
@@ -82,7 +82,7 @@ void deleteTree(Node* root) {
     free(root);
 }
 
-// User menu
+// Меню користувача
 void menu() {
     printf("\n1. Add element\n");
     printf("2. Delete element\n");
@@ -103,7 +103,7 @@ int main() {
         printf("Your choice: ");
         if (scanf("%d", &choice) != 1) {
             printf("Invalid input!\n");
-            while (getchar() != '\n'); // clear input buffer
+            while (getchar() != '\n'); // очищення буфера вводу
             continue;
         }
         switch (choice) {
