@@ -106,9 +106,9 @@ int main() {
                 Triangle t = inputTriangle();
                 int result = addElement(triangles, &t);
                 if (result == -1)
-                    printf("❌ Failed to add triangle (array is full)\n");
+                    printf("Failed to add triangle (array is full)\n");
                 else
-                    printf("✅ Triangle added at index %d\n", result);
+                    printf("Triangle added at index %d\n", result);
                 break;
             }
             case 2: {
@@ -118,9 +118,9 @@ int main() {
                 scanf("%d", &index);
                 int result = insertElementAt(triangles, &t, index);
                 if (result == -1)
-                    printf("❌ Insert failed (invalid index)\n");
+                    printf("Insert failed (invalid index)\n");
                 else
-                    printf("✅ Triangle inserted at index %d\n", result);
+                    printf("Triangle inserted at index %d\n", result);
                 break;
             }
             case 3:
