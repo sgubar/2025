@@ -20,10 +20,10 @@ void display()
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
     glBegin(GL_LINES);
-        glColor3f(1.0f, 1.0f, 1.0f); // Білий колір
-        glVertex2f(0.0, -1.0); // Вісь Y
+        glColor3f(1.0f, 1.0f, 1.0f);
+        glVertex2f(0.0, -1.0);
         glVertex2f(0.0, 1.0);
-        glVertex2f(-1.0, 0.0); // Вісь X
+        glVertex2f(-1.0, 0.0);
         glVertex2f(1.0, 0.0);
     glEnd();
 
